@@ -20,8 +20,11 @@ public class SmsUtil {
 
         CCPRestSDK restAPI = new CCPRestSDK();
         restAPI.init("app.cloopen.com", "8883");// 初始化服务器地址和端口，格式如下，服务器地址不需要写https://
+		
         restAPI.setAccount(env.getProperty("accountSid"), env.getProperty("accountToken"));// 初始化主帐号和主帐号TOKEN
+		
         restAPI.setAppId("8aaf07086bdeb007016bf0a48c9b0a32");// 初始化应用ID
+		
         result = restAPI.sendTemplateSMS(paramMap.get("phone"), paramMap.get("templateld"), new String[]{paramMap.get("code"), paramMap.get("time")});
 
         System.out.println("SDKTestSendTemplateSMS result=" + result);
